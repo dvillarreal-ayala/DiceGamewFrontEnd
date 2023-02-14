@@ -5,26 +5,28 @@ public class Player
 {
     //variables
     //Dice used for player's moves.
+    private int playerNumber;
     private String name;
     private int totalSum;
     private Die Die1;
     private Die Die2;
-    private Image D1, D2, D3, D4, D5, D6;
-    private final int SQUARE_SIZE = 200;
 
 
-    public Player(String handle)
+    public Player(String handle, int num)
     {
         name = handle;
+        playerNumber = num;
         totalSum = 0;
-        Die1 = new Die(1);
-        Die2 = new Die(2);
-        this.D1 = new ImageIcon("Resources/D1.png").getImage();
-        this.D2 = new ImageIcon("Resources/D2.png").getImage();
-        this.D3 = new ImageIcon("Resources/D3.png").getImage();
-        this.D4 = new ImageIcon("Resources/D4.png").getImage();
-        this.D5 = new ImageIcon("Resources/D5.png").getImage();
-        this.D6 = new ImageIcon("Resources/D6.png").getImage();
+        if(num == 1)
+        {
+            Die1 = new Die(1);
+            Die2 = new Die(2);
+        }
+        else
+        {
+            Die1 = new Die(3);
+            Die2 = new Die(4);
+        }
     }
     public String getName()
     {
@@ -33,6 +35,14 @@ public class Player
     public int getSum()
     {
         return totalSum;
+    }
+    public Die getDie1()
+    {
+        return Die1;
+    }
+    public Die getDie2()
+    {
+        return Die2;
     }
     public void setName(String handle)
     {

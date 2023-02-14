@@ -16,13 +16,15 @@ public class Game
     private Player player1;
     private Player player2;
     private GameViewer gameViewer;
+    private boolean gameWon;
 
     //Constructor
     public Game(String name1, String name2)
     {
-        player1 = new Player(name1);
-        player2 = new Player(name2);
+        player1 = new Player(name1, 1);
+        player2 = new Player(name2, 2);
         gameViewer = new GameViewer(this);
+        gameWon = false;
     }
 
     public Player getPlayer1()
@@ -32,6 +34,10 @@ public class Game
     public Player getPlayer2()
     {
         return player2;
+    }
+    public boolean getGameWon()
+    {
+        return gameWon;
     }
     //method used to calculate and print winner of game.
     public String printWinner(int sum1, int sum2)
@@ -66,27 +72,32 @@ public class Game
             //insert round code
             int play1roll = player1.roll();
             System.out.println(player1.getName() + " rolled " + play1roll + "!");
+            gameViewer.repaint();
             System.out.print("Would you like to roll again?(y)(n): ");
             String response = scanner.nextLine();
             if(response.equals("y") == true)
             {
                 play1roll = player1.roll();
                 System.out.println(player1.getName() + " rolled " + play1roll + "!");
+                gameViewer.repaint();
             }
             player1.updateSum(play1roll);
             int play2roll = player2.roll();
             System.out.println(player2.getName() + " rolled " + play2roll + "!");
+            gameViewer.repaint();
             System.out.print("Would you like to roll again?(y)(n): ");
             response = scanner.nextLine();
             if(response.equals("y") == true)
             {
                 play2roll = player2.roll();
                 System.out.println(player2.getName() + " rolled " + play2roll + "!");
+                gameViewer.repaint();
             }
             player2.updateSum(play2roll);
             System.out.println();
-
         }
+        gameWon = true;
+        gameViewer.repaint();
     }
 
     public static void main(String[] args)
