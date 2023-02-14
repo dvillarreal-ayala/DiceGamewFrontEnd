@@ -1,7 +1,7 @@
 /**
  * Created by Damian Villarreal-Ayala @ Menlo School AP CS2 on Feb 8, 2023.
  *
- * Contributors: Elijah Chandler & Ozymandias, King of Cats.
+ * Contributors: Ozymandias, King of Cats.
  */
 
 import javax.swing.*;
